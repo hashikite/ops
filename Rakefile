@@ -47,8 +47,6 @@ namespace :buildkite do
                 rake buildkite:terraform:apply
               agents:
                 queue: ops
-              concurrency: 1
-              concurrency_group: ops/terraform
           STEPS
         end
         fail unless $?.success?

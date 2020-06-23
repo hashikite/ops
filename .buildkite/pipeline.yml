@@ -5,5 +5,3 @@ steps:
   command: rake buildkite:terraform:plan
   agents:
     queue: ops
-  concurrency: 1
-  concurrency_group: ops/terraform
