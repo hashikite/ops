@@ -1,7 +1,6 @@
 steps:
 - label: ":terraform: :thinking_face: Terraform Plan"
   key: terraform:plan
-  depends_on: terraform:validate
   command: rake buildkite:terraform:plan
   agents:
     queue: ops
