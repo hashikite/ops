@@ -76,7 +76,7 @@ resource "aws_ecs_task_definition" "buildkite-agent-ops" {
 			cpu          = 0,
 
 			environment  = [
-				{ name = "BUILDKITE_AGENT_NAME", value = "buldkite-agent-ops-%h-%i" },
+				{ name = "BUILDKITE_AGENT_NAME", value = "buldkite-agent-ops" },
 				{ name = "BUILDKITE_AGENT_TAGS", value = "queue = ops" },
 			],
 			secrets = [
