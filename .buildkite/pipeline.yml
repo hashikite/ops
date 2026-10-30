@@ -1,6 +1,0 @@
-steps:
-- label: ":terraform: :thinking_face: Terraform Plan"
-  key: terraform:plan
-  command: rake buildkite:terraform:plan
-  agents:
-    queue: ops
