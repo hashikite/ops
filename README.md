@@ -48,6 +48,16 @@ Verify that all other managed state entries are unchanged. The earlier EIP
 migration already removed the EIP and absent NAT entries; do not import them
 back into this state.
 
+`AppTaskRole` also has an existing, untracked attachment to
+`arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy`.
+Import it as `aws_iam_role_policy_attachment.app-ecs` before teardown.
+Temporarily restore its original role, attachment and trust-policy declarations
+from before this change, import using ID
+`AppTaskRole/arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy`,
+and refresh that attachment to record its dependency on `aws_iam_role.app`.
+Then remove those temporary declarations again. This schedules the detach
+before role deletion without changing or deleting the shared AWS policy.
+
 Review a fresh saved plan before applying. It must only destroy dedicated
 Hashikite demo resources, without changing retained resources or touching
 GHES. A local-copy rehearsal is not the deployable remote-backend plan.
